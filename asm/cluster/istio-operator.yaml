@@ -34,8 +34,8 @@ spec:
     citadel:
       enabled: false
     # Turn on node agent component
-    nodeAgent:
-      enabled: true
+    # nodeAgent:
+    #  enabled: true
     # Egress is supported but not default
     egressGateways:
     - enabled: false
@@ -62,14 +62,14 @@ spec:
       enableProtocolSniffingForInbound: false
 
     # Set up SDS with Google Mesh CA.
-    nodeagent:
-      image: node-agent-k8s
-      env:
-        CA_PROVIDER: "GoogleCA"
-        CA_ADDR: "meshca.googleapis.com:443"
-        PLUGINS: "GoogleTokenExchange"
-        VALID_TOKEN: true
-        GKE_CLUSTER_URL: "https://container.googleapis.com/v1/projects/PROJECT_ID/locations/us-central1-c/clusters/asm-cluster" # {"type":"string","x-kustomize":{"partialSetters":[{"name":"gcloud.core.project","value":"PROJECT_ID"},{"name":"cluster-name","value":"asm-cluster"},{"name":"gcloud.compute.zone","value":"us-central1-c"}]}}
+    # nodeagent:
+    #   image: node-agent-k8s
+    #   env:
+    #     CA_PROVIDER: "GoogleCA"
+    #     CA_ADDR: "meshca.googleapis.com:443"
+    #     PLUGINS: "GoogleTokenExchange"
+    #     VALID_TOKEN: true
+    #     GKE_CLUSTER_URL: "https://container.googleapis.com/v1/projects/PROJECT_ID/locations/us-central1-c/clusters/asm-cluster" # {"type":"string","x-kustomize":{"partialSetters":[{"name":"gcloud.core.project","value":"PROJECT_ID"},{"name":"cluster-name","value":"asm-cluster"},{"name":"gcloud.compute.zone","value":"us-central1-c"}]}}
 
     # Enable telemetry v2 backend by Stackdriver.
     # Prometheus is also supported with --set values.telemetry.v2.prometheus.enabled=true --set prometheus.enabled=true
