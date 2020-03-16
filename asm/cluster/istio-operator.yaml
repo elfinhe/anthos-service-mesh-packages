@@ -52,6 +52,7 @@ spec:
     # Prometheus is disabled by default, but supported with --set values.prometheus.enabled=true
     prometheus:
       enabled: false
+
   values:
     # Protocol sniffing is not supported
     pilot:
@@ -104,6 +105,11 @@ spec:
       # Enable permissive mTLS by default
       mtls:
         enabled: false
+
+      # Enable SDS
+      sds:
+        token:
+          aud: "PROJECT_ID.svc.id.goog" # {"type":"string","x-kustomize":{"partialSetters":[{"name":"gcloud.core.project","value":"PROJECT_ID"}]}}
 
       sts:
         servicePort: 15463
