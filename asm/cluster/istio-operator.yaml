@@ -105,11 +105,5 @@ spec:
       mtls:
         enabled: false
 
-      # Enable SDS
-      sds:
-        enabled: true
-        token:
-          aud: "PROJECT_ID.svc.id.goog" # {"type":"string","x-kustomize":{"partialSetters":[{"name":"gcloud.core.project","value":"PROJECT_ID"}]}}
-
       sts:
         servicePort: 15463
