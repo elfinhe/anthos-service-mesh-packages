@@ -80,8 +80,6 @@ spec:
     # Enable SDS on ingress
     gateways:
       istio-ingressgateway:
-        sds:
-          enabled: true
         env:
           GCP_METADATA: "PROJECT_ID|PROJECT_NUMBER|asm-cluster|us-central1-c" # {"type":"string","x-kustomize":{"partialSetters":[{"name":"gcloud.core.project","value":"PROJECT_ID"},{"name":"gcloud.project.projectNumber","value":"PROJECT_NUMBER"},{"name":"cluster-name","value":"asm-cluster"},{"name":"gcloud.compute.zone","value":"us-central1-c"}]}}
           CA_PROVIDER: "GoogleCA"
@@ -113,10 +111,3 @@ spec:
 
       sts:
         servicePort: 15463
-
-      # Use Kubernetes CA to provision Galley and Sidecar-Injector webhook certificates.
-      certificates:
-      - secretName: dns.istio-galley-service-account
-        dnsNames: [istio-galley.istio-system.svc, istio-galley.istio-system]
-      - secretName: dns.istio-sidecar-injector-service-account
-        dnsNames: [istio-sidecar-injector.istio-system.svc, istio-sidecar-injector.istio-system]
